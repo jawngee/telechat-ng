@@ -349,7 +349,7 @@ void ts_none (unsigned char c)
       cur_slot->flags.gotcr = 1;
       break;
 
-    case NULL:
+    case '\0':
       if (!cur_slot->flags.gotcr)
 	break;
       /* PASS THROUGH */
@@ -1005,8 +1005,10 @@ int main (int argc, char **argv)
 
   /* Maybe fork the process to the background */
   if (!noforkFlag) {
-    if (fork ())
+    
+    if (fork ()) {
       return 0;
+    }
 
     /* Signals related to tty i/o */
     signal (SIGTTIN, SIG_IGN);
@@ -1019,17 +1021,19 @@ int main (int argc, char **argv)
 
   set_signals ();
 
+  printf ("Server started on port %d at %s",
+     inet_port, ctime (&startup_time));
   sprintf (msg_buf, "Server started on port %d at %.24s",
-	   inet_port, ctime (&startup_time));
+     inet_port, ctime (&startup_time));
   write_log_system (msg_buf);
 
-  my_pid = getpid();
-  pid_file = fopen (pid_fname, "w");
-  if (pid_file == NULL)
-    panic ("telechat-ng: fopen");
+ my_pid = getpid();
+ pid_file = fopen (pid_fname, "w");
+ if (pid_file == NULL)
+   panic ("telechat-ng: fopen");
 
-  fprintf (pid_file, "%d", my_pid);
-  fclose (pid_file);
+ fprintf (pid_file, "%ld", (long)my_pid);
+ fclose (pid_file);
 
   mainloop();
   return 0;

@@ -35,6 +35,7 @@
 #include <sys/types.h>
 #include <limits.h>
 #include <locale.h>
+#include <time.h>
 
 #include "config.h"
 
