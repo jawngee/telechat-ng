@@ -140,6 +140,9 @@ extern int login_is_valid (char *id);
 extern void cmd_togglebeeps (void);
 extern void cmd_beep (void);
 
+/* hugs.c */
+extern void cmd_hug (void);
+
 /* active.c */
 extern void active (void);
 extern void display_users (int ch);

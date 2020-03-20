@@ -68,6 +68,7 @@ static CMD cmds_advanced[] =
   'd', 1, cmd_station,         "Broadcast station message",
   'D', 1, cmd_broadcast_emote, "Broadcast emote",
 #endif
+  'h', 1, cmd_hug,             "Hug another user",
   'b', 1, cmd_beep,            "Send a beep to another user",
   'M', 0, cmd_pmail_offmsg,    "Send private offline message",
   ',', 0, cmd_pmail_reply,     "Reply to private message",

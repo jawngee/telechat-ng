@@ -21,18 +21,18 @@ IFLAGS =	-I. -I/usr/local/include
 #CFLAGS =	-O2 $(IFLAGS)
 
 # Debug
-CFLAGS =	-g $(IFLAGS)
+CFLAGS =	-g $(IFLAGS) -O0
 
 PROG = 	telechat-ng
 
 OBJS = 	main.o queue.o recent.o users.o utils.o active.o \
-	io.o acct.o init.o pmail.o beeps.o admin.o signals.o \
+	io.o acct.o init.o pmail.o beeps.o hugs.o admin.o signals.o \
 	channels.o typing.o enter.o broadcast.o quit.o \
 	emote.o db.o logging.o config.o colors.o validate.o \
 	commands.o userinfo.o squelch.o linked.o
 
 SRCS =	main.c queue.c recent.c users.c utils.c active.c io.c \
-	acct.c init.c pmail.c beeps.c enter.c admin.c signals.c \
+	acct.c init.c pmail.c beeps.c hugs.c enter.c admin.c signals.c \
 	channels.c typing.c broadcast.c quit.c \
 	emote.c db.c logging.c config.c colors.c validate.c \
 	commands.c userinfo.c squelch.c
@@ -90,6 +90,7 @@ acct.o: telechat.h config.h prototypes.h db.h
 init.o: telechat.h config.h prototypes.h db.h
 pmail.o: telechat.h config.h prototypes.h db.h
 beeps.o: telechat.h config.h prototypes.h db.h
+hugs.o: telechat.h config.h prototypes.h db.h
 enter.o: telechat.h config.h prototypes.h db.h
 admin.o: telechat.h config.h prototypes.h db.h
 signals.o: telechat.h config.h prototypes.h db.h
